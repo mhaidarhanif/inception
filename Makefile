@@ -2,6 +2,9 @@ COMPOSE_PATH = srcs/docker-compose.yml
 
 all: up
 
+build:
+	docker compose -f $(COMPOSE_PATH) up --build
+
 up:
 	docker compose -f $(COMPOSE_PATH) up -d
 
