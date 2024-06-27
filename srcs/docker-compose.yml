@@ -11,3 +11,8 @@ services:
     container_name: wordpress
     volumes:
       - ./web:/var/www/html
+    depends_on:
+      - mariadb
+  mariadb:
+    build: requirements/mariadb
+    container_name: mariadb
