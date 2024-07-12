@@ -1,6 +1,19 @@
 # Inception 42
 
 ```sh
+rm -rf mariadb wordpress
+
+~/data
+mkdir mariadb wordpress
+```
+
+```sh
+sudo vim /etc/hosts
+
+127.0.0.1 example.42.fr
+```
+
+```sh
 sudo apt-get update
 
 sudo apt-get install ca-certificates curl make
