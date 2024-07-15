@@ -12,35 +12,35 @@ services:
       - mariadb:/var/lib/mysql
     env_file: .env
 
-  nginx:
-    build: requirements/nginx
-    container_name: nginx
-    image: nginx:inception
-    restart: always
-    ports:
-      - "443:443"
-    networks:
-      - inception
-    volumes:
-      - wordpress:/var/www/html
-    env_file: .env
-    depends_on:
-      - wordpress
+  # nginx:
+  #   build: requirements/nginx
+  #   container_name: nginx
+  #   image: nginx:inception
+  #   restart: always
+  #   ports:
+  #     - "443:443"
+  #   networks:
+  #     - inception
+  #   volumes:
+  #     - wordpress:/var/www/html
+  #   env_file: .env
+  #   depends_on:
+  #     - wordpress
 
-  wordpress:
-    build: requirements/wordpress
-    container_name: wordpress
-    image: wordpress:inception
-    restart: always
-    expose:
-      - "9000"
-    networks:
-      - inception
-    volumes:
-      - wordpress:/var/www/html
-    env_file: .env
-    depends_on:
-      - mariadb
+  # wordpress:
+  #   build: requirements/wordpress
+  #   container_name: wordpress
+  #   image: wordpress:inception
+  #   restart: always
+  #   expose:
+  #     - "9000"
+  #   networks:
+  #     - inception
+  #   volumes:
+  #     - wordpress:/var/www/html
+  #   env_file: .env
+  #   depends_on:
+  #     - mariadb
 
 networks:
   inception:
@@ -55,7 +55,6 @@ volumes:
       type: bind
       o: bind
       device: /Users/user/data/wordpress
-      # device: /home/example/data/wordpress
 
   mariadb:
     name: mariadb
@@ -64,4 +63,3 @@ volumes:
       type: bind
       o: bind
       device: /Users/user/data/mariadb
-      # device: /home/example/data/mariadb
