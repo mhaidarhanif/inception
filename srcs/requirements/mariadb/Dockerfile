@@ -1,12 +1,16 @@
-FROM debian:trixie-slim
+FROM debian:bullseye-slim
 
-RUN apt update && apt upgrade -y && apt install -y mariadb-server mariadb-client gettext
+RUN apt update && \
+  apt install -y mariadb-server
 
-COPY 50-server.cnf /etc/mysql/mariadb.conf.d/.
-
-RUN mkdir /run/mysqld
+RUN mkdir -p /run/mysqld
+RUN chown -R mysql:mysql /run/mysqld
 
 COPY ./start.sh /
-RUN chmod a+x /start.sh
+COPY 50-server.cnf /etc/mysql/mariadb.conf.d/.
 
-CMD ["/start.sh"]
+RUN chmod +x /start.sh
+
+EXPOSE 3306
+
+ENTRYPOINT ["/start.sh"]

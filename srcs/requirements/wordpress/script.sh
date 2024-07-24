@@ -11,7 +11,6 @@ chmod +x wp-cli.phar
   --dbname=${MYSQL_DATABASE} \
   --dbuser=${MYSQL_USER} \
   --dbpass=${MYSQL_PASSWORD} \
-  --dbhost=${MYSQL_HOST} \
   --allow-root
 
 ./wp-cli.phar core install \

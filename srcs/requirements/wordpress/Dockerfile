@@ -1,4 +1,4 @@
-FROM debian:trixie-slim
+FROM debian:bullseye-slim
 
 RUN apt update && apt upgrade -y && apt install -y php-fpm php-mysqli curl
 
