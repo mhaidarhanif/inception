@@ -1,0 +1,24 @@
+services:
+  wordpress:
+    build: requirements/wordpress
+    container_name: wordpress
+    image: wordpress:inception
+    restart: always
+    expose:
+      - "9000"
+    networks:
+      - inception
+    volumes:
+      - wordpress_volume:/var/www/html
+    env_file: .env
+
+volumes:
+  wordpress_volume:
+    driver_opts:
+      type: bind
+      o: bind
+      device: /Users/user/data/wordpress
+
+networks:
+  inception:
+    driver: bridge
