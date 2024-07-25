@@ -18,13 +18,18 @@ down:
 clean:
 	docker compose -f $(COMPOSE_PATH) down
 	docker volume prune -f
-	docker system prune -af
+	# docker system prune -af
 	rm -rf $(MARIADB_VOLUME) $(WORDPRESS_VOLUME)
 	rm -rf /Users/user/data/
 	docker ps -aq | xargs -r sudo docker rm -f
 
 fclean:
 	make clean
+	rm -rfd /Users/user/data/wordpress
+	rm -rfd /Users/user/data/mariadb
+	mkdir /Users/user/data/mariadb /Users/user/data/wordpress
+
+freset:
 	rm -rfd /Users/user/data/wordpress
 	rm -rfd /Users/user/data/mariadb
 	mkdir /Users/user/data/mariadb /Users/user/data/wordpress
