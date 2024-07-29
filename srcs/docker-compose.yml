@@ -1,7 +1,7 @@
 services:
   mariadb:
-    container_name: mariadb
     build: ./requirements/mariadb/.
+    container_name: mariadb
     networks:
       - inception
     env_file: .env

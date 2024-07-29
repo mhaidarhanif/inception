@@ -23,16 +23,14 @@ clean:
 	rm -rf /Users/user/data/
 	docker ps -aq | xargs -r sudo docker rm -f
 
-fclean:
-	make clean
-	rm -rfd /Users/user/data/wordpress
-	rm -rfd /Users/user/data/mariadb
-	mkdir /Users/user/data/mariadb /Users/user/data/wordpress
-
 freset:
 	rm -rfd /Users/user/data/wordpress
 	rm -rfd /Users/user/data/mariadb
 	mkdir /Users/user/data/mariadb /Users/user/data/wordpress
+
+fclean:
+	make clean
+	make freset
 
 re:
 	make fclean
